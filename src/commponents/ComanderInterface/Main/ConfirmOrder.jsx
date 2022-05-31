@@ -1,0 +1,26 @@
+import React from 'react'
+import { Button, ButtonGroup, Col, Container, Form, Row } from 'react-bootstrap'
+import './style.css'
+const ConfirmOrder = () => {
+    return (
+        <div className="color-overlay d-flex justify-content-center align-items-center">
+            <Form id='confirm_order' className='rounded p-5 p-sm-5'>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Example textarea</Form.Label>
+                    <Form.Control type='text' placeholder='Спасибо, за заказ. Наш youtube: https://www.youtube.com/watch?v=nmC6_2oYqY4&list=LL&index=58&ab_channel=Skriptonit-Topic' rows={4} readOnly />
+                </Form.Group>
+                <Container>
+                    <Row>
+                        <Col md={{ span: 4, offset: 4 }}>
+                            <ButtonGroup aria-label="Basic example">
+                                <Button className='button_confirm'>Confirm</Button>
+                            </ButtonGroup>
+                        </Col>
+                    </Row>
+                </Container>
+            </Form>
+        </div>
+    )
+}
+
+export default ConfirmOrder
