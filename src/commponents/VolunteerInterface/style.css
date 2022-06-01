@@ -1,0 +1,11 @@
+.active_input {
+  position: relative;
+  top: 30px;
+}
+.text_orders {
+  text-align: center;
+}
+
+.active_button {
+  text-align: center;
+}

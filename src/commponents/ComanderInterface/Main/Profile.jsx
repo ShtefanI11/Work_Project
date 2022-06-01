@@ -1,7 +1,9 @@
 import React from 'react'
-import { Form, CloseButton, InputGroup, FormControl, Container, Row, Col, ButtonGroup, Button } from 'react-bootstrap'
+import { Form, InputGroup, FormControl, Container, Row, Col, ButtonGroup, Button } from 'react-bootstrap'
+import { useParams } from 'react-router-dom';
 import './style.css'
 const Profile = () => {
+    const params = useParams();
     return (
         <div className='color-overlay d-flex justify-content-center align-items-center'>
             <Form className='rounded p-5 p-sm-5'>
@@ -45,5 +47,4 @@ const Profile = () => {
         </div>
     )
 }
-
 export default Profile
