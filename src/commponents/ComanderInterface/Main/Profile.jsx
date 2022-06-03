@@ -43,6 +43,7 @@ const Profile = () => {
                         </Col>
                     </Row>
                 </Container>
+                <Button variant="success" className='button_add'>+</Button>{' '}
             </Form>
         </div>
     )

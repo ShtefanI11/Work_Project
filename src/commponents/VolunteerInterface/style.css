@@ -9,3 +9,22 @@
 .active_button {
   text-align: center;
 }
+.accept_available {
+  position: relative;
+  left: 84%;
+  top: 31px;
+}
+.order_filling2 {
+  position: relative;
+  top: 21px;
+}
+.active_action {
+  position: relative;
+  top: 40px;
+  left: 21px;
+}
+.closed_button_share {
+  position: relative;
+  left: 81%;
+  top: 30px;
+}

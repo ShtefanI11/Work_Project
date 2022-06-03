@@ -6,7 +6,6 @@ const ConfirmOrder = () => {
         <div className="color-overlay d-flex justify-content-center align-items-center">
             <Form id='confirm_order' className='rounded p-5 p-sm-5'>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label>
                     <Form.Control type='text' placeholder='Спасибо, за заказ. Наш youtube: https://www.youtube.com/watch?v=nmC6_2oYqY4&list=LL&index=58&ab_channel=Skriptonit-Topic' rows={4} readOnly />
                 </Form.Group>
                 <Container>
@@ -18,6 +17,7 @@ const ConfirmOrder = () => {
                         </Col>
                     </Row>
                 </Container>
+                +ADD Photo
             </Form>
         </div>
     )

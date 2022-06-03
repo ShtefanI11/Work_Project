@@ -22,19 +22,14 @@ const ViewOrder = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <ButtonGroup aria-label="Basic example">
+                            <ButtonGroup aria-label="Basic example" >
                                 <Button>{`<`} BACK</Button>
                             </ButtonGroup>
                         </Col>
                         <Col>
                             <ButtonGroup aria-label="Basic example">
-                                <Button className='button-cancel'>CANCEL</Button>
+                                <Button className='button_cancel_vieworder'>CANCEL</Button>
                             </ButtonGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md={{ offset: 11 }}>
-                            <Button variant="success" className='button2-top'>+</Button>{' '}
                         </Col>
                     </Row>
                 </Container>

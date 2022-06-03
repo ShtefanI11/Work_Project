@@ -14,10 +14,7 @@ const CreateOrder = () => {
                         </Form.Group>
                     </Row>
                     <Row>
-                        <Col className='valid_text'>Valid till...</Col>
-                    </Row>
-                    <Row>
-                        <Col className='calendar'><BootstrapDatePickerComponent /></Col>
+                        <Col className='right'>Valid till...<BootstrapDatePickerComponent /></Col>
                     </Row>
                 </Container>
                 <Container className='button-position'>

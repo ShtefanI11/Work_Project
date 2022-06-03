@@ -61,7 +61,7 @@ const Login = () => {
                     <Form.Check type='checkbox' label='Remember Me' />
                 </Form.Group>
                 <Button onClick={async e => {
-                    navigate(`/main/`)
+                    navigate(`/Main/`)
                 }} variant='primary' type='submite'>
                     Login
                 </Button>

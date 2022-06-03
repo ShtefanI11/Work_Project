@@ -36,13 +36,13 @@ const SignUp = () => {
         }
     }
 
-    const codeHandler = (e) => {
-        setCode(e.target.value)
-        if (e.target.value.length > 6) {
-            setPasswordError('Code must be 6 characters long')
+    const codeHandler = (el) => {
+        setCode(el.target.value)
+        if (el.target.value.length > 6) {
+            setCodeError('Code must be 6 characters long')
 
         } else {
-            setPasswordError('')
+            setCodeError('')
         }
     }
 
@@ -55,7 +55,7 @@ const SignUp = () => {
                 setPasswordDirty(true)
                 break
             case 'code':
-                setPasswordDirty(true)
+                setCodeDirty(true)
                 break
         }
     }
@@ -86,13 +86,13 @@ const SignUp = () => {
                     <Form.Check type='checkbox' label='I agree to the processing of personal data' />
                 </Form.Group>
 
-                <Form.Group className='mb-3' controlId='formBasicPassword'>
+                <Form.Group className='mb-3' controlId='formBasicCode'>
                     {(codeError && codeDirty) && <div style={{ color: 'red' }}>{codeError}</div>}
                     <Form.Control onChange={e => codeHandler(e)} value={code} onBlur={e => blurHandler(e)} type='code' name='code' placeholder='Code' />
                 </Form.Group>
                 <Button variant='primary' type='submite'
                     onClick={async event => {
-                        navigate(`/main/`);
+                        navigate(`/Main/`);
                     }}
                 >
                     SingUp

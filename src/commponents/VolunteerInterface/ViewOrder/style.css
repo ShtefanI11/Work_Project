@@ -1,0 +1,28 @@
+#view_accept_position {
+  height: 75%;
+  width: 75%;
+}
+.viewaccept_notes {
+  position: relative;
+  left: 45%;
+  top: 10px;
+}
+.viewaccept_textarea {
+  position: relative;
+  top: 15px;
+}
+.viewaccept_button {
+  position: relative;
+  top: 20px;
+}
+#view_free_position {
+  height: 63%;
+  width: 63%;
+}
+#view_closed_position {
+  height: 63%;
+  width: 63%;
+}
+.commander_text_position {
+  text-align: center;
+}
