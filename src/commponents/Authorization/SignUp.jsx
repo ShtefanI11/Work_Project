@@ -5,16 +5,20 @@ import './style.css'
 
 const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
+const CODE_regExp = /^[0-9a-zA-Z]{6,}$/;
 
 const SignUp = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
 
     const [code, setCode] = useState('')
-    const [codeDirty, setCodeDirty] = useState(false)
-    const [codeError, setCodeError] = useState('Error code!')
+    const [codeError, setCodeError] = useState('')
+
+    const { codeSymbols } = useParams();
+    const [newCode, setNewCode] = useState(codeSymbols);
 
     const changeEmailHandler = (e) => {
         setEmail(e);
@@ -24,6 +28,11 @@ const SignUp = () => {
     const changePaswordHandler = (e) => {
         setPassword(e);
         validationPassword(e);
+    }
+
+    const changeCodeHandler = (e) => {
+        setCode(e);
+        validationCode(e);
     }
 
     const validationEmail = (e) => {
@@ -44,15 +53,16 @@ const SignUp = () => {
         } else setPasswordError('')
     }
 
-    const codeHandler = (el) => {
-        setCode(el.target.value)
-        if (el.target.value.length > 6) {
-            setCodeError('Code must be 6 characters long')
-
-        } else {
-            setCodeError('')
-        }
+    const validationCode = (e) => {
+        if (!e) {
+            setCodeError('');
+            return;
+        } else if (!CODE_regExp.test(e)) {
+            setCodeError('Should contain at more 6 characters')
+        } else setCodeError('')
     }
+
+
 
 
 
@@ -63,13 +73,9 @@ const SignUp = () => {
         !password && setPasswordError('Password cannot be empty')
 
         if (email && !emailError && password && !passwordError) {
-            navigate(`/Main/`)
+            navigate(`/main/`)
         }
     }
-
-    const params = useParams();
-    const id = params.id;
-    const navigate = useNavigate();
 
     return (
         <div className='color-overlay d-flex justify-content-center align-items-center'>
@@ -98,13 +104,13 @@ const SignUp = () => {
                         placeholder='Password' />
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formBasicCode'>
-                    {(codeError && codeDirty) && <div style={{ color: 'red' }}>{codeError}</div>}
+                    {codeError && <div style={{ color: 'red' }}>{codeError}</div>}
                     <Form.Control
-                        onChange={e => codeHandler(e)}
-                        value={code}
-                        type='code'
-                        name='code'
-                        placeholder='Code' />
+                        value={newCode}
+                        type='text'
+                        placeholder='Code'
+                        onChange={e => setNewCode(e.target.value)}
+                    />
                 </Form.Group>
                 <Button
                     variant='primary'
