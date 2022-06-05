@@ -24,8 +24,7 @@ const Navigation = () => {
                 <Route path="/Login" element={<Login />} />
                 <Route element={<PrivateRoute isLogged={true} />}>
                     <Route path="/" element={<HomePage />} />
-                    <Route path='signup/:codeSymbols' element={<SignUp />} />
-                    <Route path="/signup" element={<SignUp />} />
+                    <Route path='/signup' element={<SignUp />} />
                     <Route path="/Main" element={<Profile />} />
                     <Route path="/ViewOrder" element={<ViewOrder />} />
                     <Route path="/CreateOrder" element={<CreateOrder />} />

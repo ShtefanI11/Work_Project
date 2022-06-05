@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+
 import './style.css'
 
 const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -17,8 +18,21 @@ const SignUp = () => {
     const [code, setCode] = useState('')
     const [codeError, setCodeError] = useState('')
 
+    const [posts, setPosts] = useState([])
     const { codeSymbols } = useParams();
     const [newCode, setNewCode] = useState(codeSymbols);
+    const { codeUrl } = useParams();
+    const [startCode, setStartCode] = useState(codeUrl);
+
+    let [searchParams, setSearchParams] = useSearchParams();
+    /* useEffect(() => {
+        fetch(`http://localhost:3000/signup/?codeUrl=/codeSymbols`, {
+            method: 'GET'
+        })
+            .then((response) => response.json())
+            .then((data) => setStartCode(data))
+    }) */
+
 
     const changeEmailHandler = (e) => {
         setEmail(e);
@@ -63,9 +77,6 @@ const SignUp = () => {
     }
 
 
-
-
-
     const goToMain = (e) => {
         e.preventDefault();
 
@@ -105,11 +116,19 @@ const SignUp = () => {
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='formBasicCode'>
                     {codeError && <div style={{ color: 'red' }}>{codeError}</div>}
+
                     <Form.Control
-                        value={newCode}
+                        value={searchParams.get && newCode}
                         type='text'
                         placeholder='Code'
-                        onChange={e => setNewCode(e.target.value)}
+                        onChange={(e) => {
+                            let code = e.target.value;
+                            if (code) {
+                                setSearchParams({ code })
+                            } else {
+                                setSearchParams({})
+                            }
+                        }}
                     />
                 </Form.Group>
                 <Button
