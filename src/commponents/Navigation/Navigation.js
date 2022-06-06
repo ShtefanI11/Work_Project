@@ -24,7 +24,7 @@ const Navigation = () => {
                 <Route path="/Login" element={<Login />} />
                 <Route element={<PrivateRoute isLogged={true} />}>
                     <Route path="/" element={<HomePage />} />
-                    <Route path='/signup' element={<SignUp />} />
+                    <Route path='/signup/' element={<SignUp />} />
                     <Route path="/Main" element={<Profile />} />
                     <Route path="/ViewOrder" element={<ViewOrder />} />
                     <Route path="/CreateOrder" element={<CreateOrder />} />
@@ -35,7 +35,7 @@ const Navigation = () => {
                     <Route path="/VolunteerInterface/Closed" element={<Closed />} />
                     <Route path="/PublicNavigation" element={<PublicNavigation />} />
                     <Route path="/VoulenteerNavigation" element={<VoulenteerNavigation />} />
-                    <Route path="/VolunteerInterface/Active/Notes/" element={<NewNote />} />
+                    <Route path="/Notes/" element={<NewNote />} />
                     <Route path="/VolunteerInterface/ViewAcceptedOrder" element={<ViewAcceptedOrder />} />
                     <Route path="/VolunteerInterface/ViewFreeOrder" element={<ViewFreeOrder />} />
                     <Route path="/VolunteerInterface/ViewClosedOrder" element={<ViewClosedOrder />} />

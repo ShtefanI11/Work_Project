@@ -1,8 +1,11 @@
 import React from 'react'
 import { Button, ButtonGroup, Col, Container, Form, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import BootstrapDatePickerComponent from '../../Bootstrap/Bootstrap'
 import './style.css'
 const CreateOrder = () => {
+    const navigate = useNavigate()
+    const goBack = () => navigate(-1)
     return (
         <div className="color-overlay d-flex justify-content-center align-items-center">
             <Form id='window_size' className='rounded p-5 p-sm-5'>
@@ -21,7 +24,7 @@ const CreateOrder = () => {
                     <Row>
                         <Col md={4}>
                             <ButtonGroup aria-label="Basic example">
-                                <Button>{`<`} BACK</Button>
+                                <Button onClick={goBack}>{`<`} BACK</Button>
                             </ButtonGroup>
                         </Col>
                         <Col md={{ span: 4, offset: 4 }}>

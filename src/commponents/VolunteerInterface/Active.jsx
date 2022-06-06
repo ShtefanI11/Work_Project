@@ -29,7 +29,7 @@ const Active = () => {
                         <Row>
                             <Col><Button
                                 onClick={async e => {
-                                    navigate(`/VolunteerInterface/Active/Notes/`)
+                                    navigate(`/notes/`)
                                 }}
                                 variant="outline-info">Notes</Button>{' '}</Col>
                             <Col><Button variant="outline-primary">Share</Button>{' '}</Col>

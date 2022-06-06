@@ -87,6 +87,16 @@ const SignUp = () => {
             navigate(`/main/`)
         }
     }
+    let newWindow;
+    function assignWindow() {
+        if (newWindow) {
+            newWindow.location.replace('http://localhost:3000/signup?code=');
+            newWindow.focus();
+        }
+    }
+    let url
+    url = window.location.search;
+    url = url.substring(url.lastIndexOf('=') + 1, url.length);
 
     return (
         <div className='color-overlay d-flex justify-content-center align-items-center'>
@@ -118,17 +128,10 @@ const SignUp = () => {
                     {codeError && <div style={{ color: 'red' }}>{codeError}</div>}
 
                     <Form.Control
-                        value={searchParams.get && newCode}
+                        value={url}
                         type='text'
                         placeholder='Code'
-                        onChange={(e) => {
-                            let code = e.target.value;
-                            if (code) {
-                                setSearchParams({ code })
-                            } else {
-                                setSearchParams({})
-                            }
-                        }}
+                        onChange={e => url(e.target.value)}
                     />
                 </Form.Group>
                 <Button

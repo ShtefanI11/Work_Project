@@ -7,6 +7,7 @@ const ViewAcceptedOrder = () => {
     const params = useParams()
     const id = params.id;
     const navigate = useNavigate();
+    const goBack = () => navigate(-1)
     return (
         <div className="color-overlay d-flex justify-content-center align-items-center">
             <Form id='view_accept_position' className='rounded p-5 p-sm-5'>
@@ -24,7 +25,7 @@ const ViewAcceptedOrder = () => {
                     <Form.Control as="textarea" rows={3} />
                     <Col><Button
                         onClick={async e => {
-                            navigate(`/VolunteerInterface/Active/Notes/`)
+                            navigate(`/notes/`)
                         }}
                         className='viewaccept_notes'
                         variant="outline-info">Notes</Button>{' '}</Col>
@@ -33,7 +34,7 @@ const ViewAcceptedOrder = () => {
                 <Container className='viewaccept_button'>
                     <Row>
                         <Col><ButtonGroup aria-label="Basic example" >
-                            <Button>{`<`} Back</Button>
+                            <Button onClick={goBack}>{`<`} Back</Button>
                         </ButtonGroup></Col>
                         <Col><Button variant="outline-secondary">Refuse</Button>{' '}</Col>
                         <Col><Button variant="outline-primary">Share</Button>{' '}</Col>

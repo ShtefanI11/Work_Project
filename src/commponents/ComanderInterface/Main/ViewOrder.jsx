@@ -3,7 +3,10 @@ import { ButtonGroup, Col, Container, Form, Row, Button } from 'react-bootstrap'
 import React from 'react';
 import './style.css'
 import BootstrapDatePickerComponent from '../../Bootstrap/Bootstrap';
+import { useNavigate } from 'react-router-dom';
 const ViewOrder = () => {
+    const navigate = useNavigate()
+    const goBack = () => navigate(-1)
     return (
         <div className="color-overlay d-flex justify-content-center align-items-center">
             <Form className='rounded p-5 p-sm-5'>
@@ -23,7 +26,7 @@ const ViewOrder = () => {
                     <Row>
                         <Col>
                             <ButtonGroup aria-label="Basic example" >
-                                <Button>{`<`} BACK</Button>
+                                <Button onClick={goBack}>{`<`} BACK</Button>
                             </ButtonGroup>
                         </Col>
                         <Col>

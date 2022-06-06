@@ -1,7 +1,10 @@
 import React from 'react'
 import { Button, ButtonGroup, Col, Container, Form, Row } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import './style.css'
 const ViewClosedOrder = () => {
+    const navigate = useNavigate()
+    const goBack = () => navigate(-1)
     return (
         <div className="color-overlay d-flex justify-content-center align-items-center">
             <Form id='view_free_position' className='rounded p-5 p-sm-5'>
@@ -20,7 +23,7 @@ const ViewClosedOrder = () => {
                 <Container>
                     <Row>
                         <Col><ButtonGroup aria-label="Basic example" >
-                            <Button>{`<`} Back</Button>
+                            <Button onClick={goBack}>{`<`} Back</Button>
                         </ButtonGroup></Col>
                         <Col><Button variant="outline-primary">Share</Button>{' '}</Col>
                     </Row>

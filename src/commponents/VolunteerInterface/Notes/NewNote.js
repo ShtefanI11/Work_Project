@@ -6,8 +6,11 @@ import config from "./config";
 import "./NewNote.css";
 
 export default function NewNote() {
+    const params = useParams()
+    const id = params.id;
     const file = useRef(null);
-    const nav = useNavigate();
+    const navigate = useNavigate()
+    const goBack = () => navigate(-1)
     const [content, setContent] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
@@ -32,9 +35,6 @@ export default function NewNote() {
 
         setIsLoading(true);
     }
-    const params = useParams()
-    const id = params.id;
-    const navigate = useNavigate();
     return (
         <div className="NewNote">
             <Form onSubmit={handleSubmit}>
@@ -59,9 +59,7 @@ export default function NewNote() {
                         Create
                     </Button>
                     <Button
-                        onClick={async e => {
-                            navigate(`/VolunteerInterface/Active/`)
-                        }}
+                        onClick={goBack}
                         variant="primary"
                     >{`<`} Back</Button>
                 </div>
