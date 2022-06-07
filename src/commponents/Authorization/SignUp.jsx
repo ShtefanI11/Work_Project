@@ -79,10 +79,8 @@ const SignUp = () => {
 
     const goToMain = (e) => {
         e.preventDefault();
-
         !email && setEmailError('Email cannot be empty')
         !password && setPasswordError('Password cannot be empty')
-
         if (email && !emailError && password && !passwordError) {
             navigate(`/main/`)
         }
@@ -97,6 +95,29 @@ const SignUp = () => {
     let url
     url = window.location.search;
     url = url.substring(url.lastIndexOf('=') + 1, url.length);
+
+    const sendData = async (url, data) => {
+        const response = await fetch(url, {
+            method: 'POST',
+            url: 'http://decadal.net/api/v1/signup',
+            body: data,
+            headers: {
+                "Content-type": "application/json"
+            },
+        })
+        if (!response.ok) {
+            throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`)
+        }
+        return await response.json()
+    }
+    const sendSignUp = () => {
+        const signUpForm = document.querySelector('.button_class')
+        const data = {
+            "name": email,
+            "email": email,
+            "password": password
+        };
+    }
 
     return (
         <div className='color-overlay d-flex justify-content-center align-items-center'>
@@ -135,9 +156,10 @@ const SignUp = () => {
                     />
                 </Form.Group>
                 <Button
+                    className='button_class'
                     variant='primary'
                     type='submite'
-                    onClick={e => goToMain(e)}
+                    onClick={(e) => goToMain(e)}
                 >
                     SingUp
                 </Button>

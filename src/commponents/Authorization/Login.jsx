@@ -8,6 +8,28 @@ const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")
 const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
 
 const Login = () => {
+    const sendData = async (url, data) => {
+        const response = await fetch(url, {
+            method: 'POST',
+            url: 'http://decadal.net/api/v1/login',
+            body: data,
+            headers: {
+                "Content-type": "application/json"
+            },
+        })
+        if (!response.ok) {
+            throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`)
+        }
+        return await response.json()
+    }
+    const sendSignUp = () => {
+        const signUpForm = document.querySelector('.button_class')
+        const data = {
+            "email": email,
+            "password": password
+        };
+    }
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
@@ -47,14 +69,14 @@ const Login = () => {
 
     const goToMain = (e) => {
         e.preventDefault();
-
         !email && setEmailError('Email cannot be empty')
         !password && setPasswordError('Password cannot be empty')
-
         if (email && !emailError && password && !passwordError) {
             navigate(`/Main/`)
         }
     }
+
+
     return (
         <div className="color-overlay d-flex justify-content-center align-items-center">
             <Form
@@ -93,6 +115,7 @@ const Login = () => {
                     onClick={e => goToMain(e)}
                     variant='primary'
                     type='submite'
+                    className='button_class'
                 >
                     Login
                 </Button>

@@ -21,7 +21,7 @@ const Navigation = () => {
     return (
         <div>
             <Routes>
-                <Route path="/Login" element={<Login />} />
+                <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute isLogged={true} />}>
                     <Route path="/" element={<HomePage />} />
                     <Route path='/signup/' element={<SignUp />} />
