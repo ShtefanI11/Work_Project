@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { Link, NavLink, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-
+import axios from 'axios';
+import { useMutation } from 'react-query';
 import './style.css'
 
 const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
 const CODE_regExp = /^[0-9a-zA-Z]{6,}$/;
-
+const API_URL = 'http://decadal.net'
 const SignUp = () => {
+    const [user, setUser] = useState(null)
+    const { mutate, isLoading } = useMutation(
+        'signup',
+        () =>
+            axios.post(
+                `${API_URL}/api/v1/`,
+                { email, password },
+                {
+                    headers: {
+                        'Content-Type':
+                            'application/json'
+                    },
+                }
+            ),
+        {
+            onSuccess: ({ data }) => {
+                setUser(data.user)
+            },
+
+        }
+    )
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -121,6 +143,7 @@ const SignUp = () => {
 
     return (
         <div className='color-overlay d-flex justify-content-center align-items-center'>
+
             <Form className='rounded p-4 p-sm-3'>
                 <Form.Label>Who?</Form.Label>
                 <Form.Select className='mb-3'>
@@ -159,7 +182,8 @@ const SignUp = () => {
                     className='button_class'
                     variant='primary'
                     type='submite'
-                    onClick={(e) => goToMain(e)}
+                    onClick={() => mutate()}
+                    disabled={isLoading}
                 >
                     SingUp
                 </Button>

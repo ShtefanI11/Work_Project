@@ -8,27 +8,10 @@ const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")
 const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
 
 const Login = () => {
-    const sendData = async (url, data) => {
-        const response = await fetch(url, {
-            method: 'POST',
-            url: 'http://decadal.net/api/v1/login',
-            body: data,
-            headers: {
-                "Content-type": "application/json"
-            },
+    fetch('http://decadal.net/')
+        .then(data => {
+            console.log(data)
         })
-        if (!response.ok) {
-            throw new Error(`Ошибка по адресу ${url}, статус ошибки ${response}`)
-        }
-        return await response.json()
-    }
-    const sendSignUp = () => {
-        const signUpForm = document.querySelector('.button_class')
-        const data = {
-            "email": email,
-            "password": password
-        };
-    }
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
