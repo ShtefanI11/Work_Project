@@ -4,29 +4,16 @@ import { Link, NavLink, useLocation, useNavigate, useParams, useSearchParams } f
 import axios from 'axios';
 import { useMutation } from 'react-query';
 import './style.css'
-
 const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
-const CODE_regExp = /^[0-9a-zA-Z]{6,}$/;
 const SignUp = () => {
 
-
-    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
 
-    const [code, setCode] = useState('')
-    const [codeError, setCodeError] = useState('')
-
-    const [posts, setPosts] = useState([])
-    const { codeSymbols } = useParams();
-    const [newCode, setNewCode] = useState(codeSymbols);
-    const { codeUrl } = useParams();
-    const [startCode, setStartCode] = useState(codeUrl);
-
-    let [searchParams, setSearchParams] = useSearchParams();
+    /* let [searchParams, setSearchParams] = useSearchParams(); */
     /* useEffect(() => {
         fetch(`http://localhost:3000/signup/?codeUrl=/codeSymbols`, {
             method: 'GET'
@@ -46,10 +33,10 @@ const SignUp = () => {
         validationPassword(e);
     }
 
-    const changeCodeHandler = (e) => {
+    /* const changeCodeHandler = (e) => {
         setCode(e);
         validationCode(e);
-    }
+    } */
 
     const validationEmail = (e) => {
         if (!e) {
@@ -69,34 +56,34 @@ const SignUp = () => {
         } else setPasswordError('')
     }
 
-    const validationCode = (e) => {
+    /* const validationCode = (e) => {
         if (!e) {
             setCodeError('');
             return;
         } else if (!CODE_regExp.test(e)) {
             setCodeError('Should contain at more 6 characters')
         } else setCodeError('')
-    }
+    } */
 
 
-    const goToMain = (e) => {
+    /* const goToMain = (e) => {
         e.preventDefault();
         !email && setEmailError('Email cannot be empty')
         !password && setPasswordError('Password cannot be empty')
         if (email && !emailError && password && !passwordError) {
             navigate(`/main/`)
         }
-    }
-    let newWindow;
+    } */
+    /* let newWindow;
     function assignWindow() {
         if (newWindow) {
             newWindow.location.replace('http://localhost:3000/signup?code=');
             newWindow.focus();
         }
-    }
-    let url
+    } */
+    /* let url
     url = window.location.search;
-    url = url.substring(url.lastIndexOf('=') + 1, url.length);
+    url = url.substring(url.lastIndexOf('=') + 1, url.length); */
 
     /* const sendData = async (url, data) => {
         const response = await fetch(url, {
@@ -119,55 +106,13 @@ const SignUp = () => {
             "email": email,
             "password": password
         };
-    } */
-
-    const sendRegistr = () => {
-        fetch("http://decadal.net/api/v1/signup", {
-            method: 'POST',
-            mode: "no-cors",
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                name: "test11",
-                email: email,
-                password: password
-            }
-            ),
-        })
-            .then(response => response.json())
-            .then(res => console.log(res))
-    }
-    /* console.log(email);
-    try {
-        await axios.post({
-            url: "http://decadal.net/api/v1/signup",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                name: 'shtefan.i333',
-                email,
-                password
-            }),
-        }).then(({ data }) => {
-            return data;
-        });
-    } catch (e) {
-        console.log("Sending error", e);
-    } */
-
+    }  */
 
     return (
         <div className='color-overlay d-flex justify-content-center align-items-center'>
 
             <Form className='rounded p-4 p-sm-3'>
-                <Form.Label>Who?</Form.Label>
-                <Form.Select className='mb-3'>
-                    <option value="1">Commander</option>
-                    <option value="2">Volunteer</option>
-                </Form.Select>
+
                 <Form.Group className='mb-3' controlId='formBasicEmail'>
                     {emailError && <div style={{ color: 'red' }}>{emailError}</div>}
                     <Form.Control
@@ -177,29 +122,40 @@ const SignUp = () => {
                         type='email'
                         placeholder='Enter Email' />
                 </Form.Group>
-                <Form.Group className='mb-3' controlId='formBasicPassword'>
-                    {passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}
-                    <Form.Control
-                        onChange={e => changePaswordHandler(e.target.value)}
-                        value={password}
-                        type='password'
-                        name='password'
-                        placeholder='Password' />
-                </Form.Group>
-                <Form.Group className='mb-3' controlId='formBasicCode'>
-                    {codeError && <div style={{ color: 'red' }}>{codeError}</div>}
+                {passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}
+                <Form.Control
+                    onChange={e => changePaswordHandler(e.target.value)}
+                    value={password}
+                    type='password'
+                    name='password'
+                    placeholder='Password' />
 
-                    <Form.Control
-                        value={url}
-                        type='text'
-                        placeholder='Code'
-                        onChange={e => url(e.target.value)}
-                    />
-                </Form.Group>
                 <Button
                     className='button_class'
                     variant='primary'
-                    onClick={sendRegistr}
+                    type='submite'
+                    onClick={async (e) => {
+                        console.log(email);
+                        try {
+                            await axios.post({
+                                url: "http://decadal.net/api/v1/signup",
+                                headers: {
+                                    "Content-type": "application/json"
+                                },
+
+                                body: JSON.stringify({
+                                    name: '',
+                                    email,
+                                    password
+
+                                }),
+                            }).then(({ data }) => {
+                                return data;
+                            });
+                        } catch (e) {
+                            console.log("Sending error", e);
+                        }
+                    }}
                 >
                     SingUp
                 </Button>

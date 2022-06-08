@@ -8,15 +8,30 @@ const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")
 const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
 
 const Login = () => {
-    fetch('http://decadal.net/')
-        .then(data => {
-            console.log(data)
+    const sendLogin = () => {
+        fetch('http://decadal.net/api/v1/login', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${accessToken}`
+            },
+            body: JSON.stringify({
+                identity: email,
+                password: password,
+                token: 'token'
+            }),
         })
+            .then(response => response.json())
+            .then(res => setAccessToken(res.accessToken))
+    }
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
+    const [accessToken, setAccessToken] = useState('')
 
     const params = useParams()
     const id = params.id;
@@ -95,9 +110,8 @@ const Login = () => {
                 </Form.Group>
 
                 <Button
-                    onClick={e => goToMain(e)}
+                    onClick={sendLogin}
                     variant='primary'
-                    type='submite'
                     className='button_class'
                 >
                     Login
