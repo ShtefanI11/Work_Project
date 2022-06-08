@@ -124,7 +124,7 @@ const SignUp = () => {
     const sendRegistr = () => {
         fetch("http://decadal.net/api/v1/signup", {
             method: 'POST',
-            mode: "no-cors",
+            mode: "cors",
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Content-type": "application/json"

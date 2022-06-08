@@ -11,11 +11,11 @@ const Login = () => {
     const sendLogin = () => {
         fetch('http://decadal.net/api/v1/login', {
             method: 'POST',
-            mode: 'no-cors',
+            mode: 'cors',
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Content-type": "application/json",
-                "Authorization": `Bearer ${accessToken}`
+
             },
             body: JSON.stringify({
                 identity: email,
@@ -24,14 +24,14 @@ const Login = () => {
             }),
         })
             .then(response => response.json())
-            .then(res => setAccessToken(res.accessToken))
+            .then(res => console.log(res))
     }
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
-    const [accessToken, setAccessToken] = useState('')
+    /* const [accessToken, setAccessToken] = useState('') */
 
     const params = useParams()
     const id = params.id;
