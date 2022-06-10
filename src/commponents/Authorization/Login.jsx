@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
+import useRefreshToken from '../hooks/useRefreshToken'
 
 import './style.css'
 
@@ -9,9 +10,10 @@ const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
 
 const Login = () => {
     const sendLogin = () => {
-        fetch('http://decadal.net/api/v1/login', {
+        const responses = fetch('http://decadal.net/api/v1/login', {
             method: 'POST',
             mode: 'cors',
+            withCredentials: "true",
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 "Content-type": "application/json",
@@ -20,19 +22,19 @@ const Login = () => {
             body: JSON.stringify({
                 identity: email,
                 password: password,
-                token: 'token'
             }),
+
         })
             .then(response => response.json())
-            .then(res => console.log(res))
+            .then(res => setAccessToken(res.token))
     }
-
+    const [token, setAccessToken] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
     /* const [accessToken, setAccessToken] = useState('') */
-
+    token && alert(token)
     const params = useParams()
     const id = params.id;
     const navigate = useNavigate();

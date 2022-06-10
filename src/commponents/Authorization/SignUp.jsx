@@ -16,6 +16,7 @@ const SignUp = () => {
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
+    const name = email.split('@')[0]
 
     const [code, setCode] = useState('')
     const [codeError, setCodeError] = useState('')
@@ -124,13 +125,12 @@ const SignUp = () => {
     const sendRegistr = () => {
         fetch("http://decadal.net/api/v1/signup", {
             method: 'POST',
-            mode: "cors",
             headers: {
                 "Access-Control-Allow-Origin": "*",
-                "Content-type": "application/json"
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                name: "test11",
+                name: name,
                 email: email,
                 password: password
             }
@@ -139,6 +139,7 @@ const SignUp = () => {
             .then(response => response.json())
             .then(res => console.log(res))
     }
+
     /* console.log(email);
     try {
         await axios.post({

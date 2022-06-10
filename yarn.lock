@@ -7672,6 +7672,11 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-token-auth@^2.3.8:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/react-token-auth/-/react-token-auth-2.3.8.tgz#8c86e1e36f05368ea22afc553c5f105826db9356"
+  integrity sha512-sRy4xpPY0NgTXL/kwQ0LqUZpHiurLG/4lSr9MAVPAuvN/hnjQqAcszl+c869ZO6Pegj2/OEP0MDmvMBJv1SkHQ==
+
 react-transition-group@^4.4.0, react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
