@@ -126,7 +126,6 @@ const SignUp = () => {
         fetch("http://decadal.net/api/v1/signup", {
             method: 'POST',
             headers: {
-                "Access-Control-Allow-Origin": "*",
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({

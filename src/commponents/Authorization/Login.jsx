@@ -12,12 +12,8 @@ const Login = () => {
     const sendLogin = () => {
         const responses = fetch('http://decadal.net/api/v1/login', {
             method: 'POST',
-            mode: 'cors',
-            withCredentials: "true",
             headers: {
-                "Access-Control-Allow-Origin": "*",
                 "Content-type": "application/json",
-
             },
             body: JSON.stringify({
                 identity: email,
