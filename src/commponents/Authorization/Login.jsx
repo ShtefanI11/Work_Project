@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
 import useRefreshToken from '../hooks/useRefreshToken'
@@ -30,7 +30,9 @@ const Login = () => {
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
     /* const [accessToken, setAccessToken] = useState('') */
-    token && alert(token)
+    useEffect(() => {
+        token && alert(token)
+    }, [token])
     const params = useParams()
     const id = params.id;
     const navigate = useNavigate();
