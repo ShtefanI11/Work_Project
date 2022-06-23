@@ -1,0 +1,83 @@
+.masthead {
+  min-height: 100vh;
+  position: relative;
+}
+.color-overlay {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: normal;
+}
+form {
+  background-color: white;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.center {
+  position: relative;
+  left: 40%;
+}
+.right {
+  position: relative;
+  left: 55%;
+}
+.button-top {
+  position: relative;
+  top: -8px;
+}
+.button2-top {
+  position: relative;
+  top: 14px;
+}
+.button_add {
+  position: relative;
+  left: 255px;
+  top: 25px;
+}
+.button_cancel_ {
+  position: relative;
+  left: 150px;
+}
+.button_cancel_vieworder {
+  position: relative;
+  left: 170px;
+}
+.button-position {
+  position: relative;
+  top: 21px;
+}
+#window_size {
+  height: 45%;
+  width: 45%;
+}
+.calendar {
+  position: relative;
+  left: 60%;
+}
+.valid_text {
+  position: relative;
+  top: 37px;
+  left: 44%;
+}
+#viewprofile {
+  height: 40%;
+  width: 40%;
+}
+.social_position {
+  text-align: center;
+}
+.social_position2 {
+  text-align: center;
+}
+.social_position3 {
+  text-align: center;
+}
+#confirm_order {
+  height: 40%;
+  width: 40%;
+}
+.button_confirm {
+  position: relative;
+  left: 220px;
+  top: 127px;
+}

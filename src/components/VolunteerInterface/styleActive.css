@@ -1,0 +1,58 @@
+.active_input {
+  position: relative;
+  top: 30px;
+}
+.text_orders {
+  text-align: center;
+}
+
+.Form_size {
+  height: 100%;
+}
+
+.active_button {
+  text-align: center;
+}
+.accept_available {
+  position: relative;
+  left: 84%;
+  top: 31px;
+}
+.order_filling2 {
+  position: relative;
+  top: 21px;
+}
+.active_action {
+  position: relative;
+  top: 40px;
+  left: 21px;
+}
+.closed_button_share {
+  position: relative;
+  left: 81%;
+  top: 30px;
+}
+.tab_2 {
+  position: relative;
+  left: 110px;
+}
+
+.navbar_volunteer {
+  display: grid;
+  grid-template-areas:
+    "a a a a"
+    "b c c c"
+    "b c c c"
+    "b c c c"
+    "b c c c"
+    "b c c c"
+    "b c c c"
+    "b c c c"
+    "b c c c";
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+}
+
+.block_3 {
+  grid-area: c;
+}

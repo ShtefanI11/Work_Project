@@ -1,0 +1,27 @@
+a {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.navbar_volunteer {
+  display: grid;
+  grid-template-areas:
+    "a a a a"
+    "b c c c"
+    "b c c c";
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+}
+.header_volunteer {
+  grid-area: a;
+  text-align: end;
+  color: red;
+  background-color: black;
+}
+
+.active-link {
+  background: rgb(77, 183, 245);
+  text-decoration: none;
+  color: var(--color-active);
+  cursor: default;
+}
