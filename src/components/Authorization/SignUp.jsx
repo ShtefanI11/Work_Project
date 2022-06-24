@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { Link, NavLink, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
-import { useMutation } from 'react-query';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+
 import './style11.css'
 import AuthorizationNavbar from './NavbarAuthorization/AuthorizationNavbar';
+import { getAndSetStorage } from '../utils/GetAndSetStorage';
 
 const EMAIL_regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const PASSWORD_regExp = /^[0-9a-zA-Z]{8,}$/;
@@ -14,25 +14,26 @@ const SignUp = () => {
         !email && setEmailError('Email cannot be empty')
         !password && setPasswordError('Password cannot be empty')
         if (email && !emailError && password && !passwordError) {
-            /* const inviteCode = fetch('http://decadal.net/api/v1/invite', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    code: code
-                }
-                ),
-            }).then(function (res) {
-                if (res.status === 201) {
-                    res.json().then(function (result) {
-                        setCode(result.code)
-                    })
-                }
+            /* const inviteCode = fetch('http://decadal.net/api/v1/invite', { 
+                method: 'POST', 
+                headers: { 
+                    'Content-Type': 'application/json', 
+                }, 
+                body: JSON.stringify({ 
+                    code: code 
+                } 
+                ), 
+            }).then(function (res) { 
+                if (res.status === 201) { 
+                    res.json().then(function (result) { 
+                        setCode(result.code) 
+                    }) 
+                } 
             }) */
 
             fetch("http://decadal.net/api/v1/signup", {
                 method: 'POST',
+                cors: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -40,13 +41,22 @@ const SignUp = () => {
                     name: name,
                     email: email,
                     password: password,
-                    code: code
-                }
-                ),
+                    code: code,
+                    type: usersType
+                }),
             })
 
                 .then((res) => {
                     if (res.status === 201) {
+                        const user = {
+                            name: name,
+                            email: email,
+                            password: password,
+                            code: code,
+                            type: usersType
+                        }
+
+                        getAndSetStorage(user)
                         navigate(`/login`)
                     }
                     else {
@@ -66,7 +76,7 @@ const SignUp = () => {
 
     const navigate = useNavigate()
     const [errors, setErrors] = useState('')
-    const [usersType, SetUsersType] = useState('commander')
+    const [usersType, SetUsersType] = useState('customer')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
@@ -134,9 +144,9 @@ const SignUp = () => {
     }
 
 
-    useEffect(() => {
+    /* useEffect(() => {
         localStorage.setItem('userType', usersType)
-    }, [usersType])
+    }, [usersType]) */
     return (
         <>
             <AuthorizationNavbar />
@@ -151,7 +161,7 @@ const SignUp = () => {
                         onChange={e => SetUsersType(e.target.value)}
                         value={usersType}
                     >
-                        <option value="commander" >Commander</option>
+                        <option value="customer" >Customer</option>
                         <option value="volunteer" >Volunteer</option>
                     </Form.Select>
                     <Form.Group

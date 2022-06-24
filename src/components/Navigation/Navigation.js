@@ -4,11 +4,7 @@ import { useContext } from "react";
 import {
     Login,
     SignUp,
-    PrivateRoute,
     Active,
-    Available,
-    VoulenteerNavigation,
-    Closed,
     ViewClosedOrder,
     ViewFreeOrder,
     ViewAcceptedOrder,
@@ -17,7 +13,6 @@ import {
     ViewProfile,
     CreateOrder,
     ViewOrder,
-    PublicNavigation,
     Profile,
     AuthContext,
 } from '../index';
@@ -25,14 +20,15 @@ import {
 const Navigation = () => {
     const { auth } = useContext(AuthContext);
 
-    const mainRoute = localStorage.getItem('userType');
+    const userStorage = JSON.parse(localStorage.getItem('users'))
+    const isExistUser = userStorage?.find(item => item?.email === auth)
 
     const userLocation = () => {
-        if (mainRoute === 'commander') {
+        if (isExistUser?.type === 'customer') {
             return <Route path="/main/" element={<Profile />} />;
-        } else if (mainRoute === 'volunteer') {
+        } else if (isExistUser?.type === 'volunteer') {
             return <Route path="/main/" element={<Active />} />;
-        }
+        } else return <Route path="/main/" element={<Profile />} />;
     }
     return (
         <Routes>
@@ -44,10 +40,6 @@ const Navigation = () => {
             <Route path="/CreateOrder" element={<CreateOrder />} />
             <Route path="/ViewProfile" element={<ViewProfile />} />
             <Route path="/ConfirmOrder" element={<ConfirmOrder />} />
-            <Route path="/VolunteerInterface/Available" element={<Available />} />
-            <Route path="/VolunteerInterface/Closed" element={<Closed />} />
-            <Route path="/PublicNavigation" element={<PublicNavigation />} />
-            <Route path="/VoulenteerNavigation" element={<VoulenteerNavigation />} />
             <Route path="/Notes/" element={<NewNote />} />
             <Route path="/VolunteerInterface/ViewAcceptedOrder" element={<ViewAcceptedOrder />} />
             <Route path="/VolunteerInterface/ViewFreeOrder" element={<ViewFreeOrder />} />

@@ -1,7 +1,7 @@
 
 import { ButtonGroup, Col, Container, Form, Row, Button } from 'react-bootstrap'
 import React from 'react';
-import './style.css'
+import './styleCustomer.css'
 import BootstrapDatePickerComponent from '../../Bootstrap/Bootstrap';
 import { useNavigate } from 'react-router-dom';
 const ViewOrder = () => {

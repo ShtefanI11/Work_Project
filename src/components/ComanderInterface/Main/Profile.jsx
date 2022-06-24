@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, InputGroup, FormControl, Container, Row, Col, ButtonGroup, Button } from 'react-bootstrap'
-import { useParams } from 'react-router-dom';
-import CommanderNavbar from '../NavbarCommander/CommanderNavbar';
-import './style.css'
+import { NavLink, useNavigate } from 'react-router-dom';
+import './styleCustomer.css'
 const Profile = () => {
-    const params = useParams();
+    const setActive = ({ isActive }) => isActive ? 'active-link' : '';
+    const navigate = useNavigate();
 
     return (
-        <>
-            <CommanderNavbar />
-            <div className='d-flex justify-content-center align-items-center'>
-                <Form className='rounded p-5 p-sm-5'>
-                    <Form.Label className='center'>My Orders</Form.Label>
+        <div className='navbar_customer' >
+            <header className='header_commander'>Profile</header>
+            <div class="list-group" className='navbar_menu'>
+                <NavLink to='/main/' className={setActive}>
+                    Home</NavLink>
+                <NavLink to='/' className={setActive}>
+                    Exit</NavLink>
+            </div>
+            <div className="block_3">
+                <Form className='Form_size'>
+                    <h3 className='center'>My Orders</h3>
                     <InputGroup className="mb-4 p-2">
                         <FormControl
                             aria-label="Default"
@@ -50,7 +56,7 @@ const Profile = () => {
                     <Button variant="success" className='button_add'>+</Button>{' '}
                 </Form>
             </div>
-        </>
+        </div>
     )
 }
 export default Profile

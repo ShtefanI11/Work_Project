@@ -1,14 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
 import { Button, Col, Container, Form, Row, Tab, Tabs } from 'react-bootstrap'
-import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import './styleActive.css'
 const Active = () => {
     const setActive = ({ isActive }) => isActive ? 'active-link' : '';
     const [active, SetActive] = useState('home')
-    const params = useParams()
-    const id = params.id;
     const navigate = useNavigate();
     return (
         <div className='navbar_volunteer'>

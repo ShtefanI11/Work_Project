@@ -33,7 +33,7 @@ const Login = () => {
                     if (res.status === 200) {
                         res.json().then(function (result) {
                             setAccessToken(result.token)
-                            setAuth(result.token)
+                            setAuth(email)
                             navigate(`/main/`)
                         })
                     } else {

@@ -1,3 +1,6 @@
+* {
+  box-shadow: none;
+}
 .masthead {
   min-height: 100vh;
   position: relative;
@@ -10,8 +13,13 @@
   mix-blend-mode: normal;
 }
 form {
+  border: 1px solid rgb(206, 204, 204);
   background-color: white;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+  transition: 0.2s linear;
+}
+form:hover {
+  box-shadow: 20px 20px 5px rgb(0 0 0 / 20%);
 }
 .img_login {
   position: relative;

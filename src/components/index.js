@@ -2,9 +2,6 @@ export { default as Login } from './Authorization/Login';
 export { default as SignUp } from './Authorization/SignUp';
 export { default as PrivateRoute } from './Authorization/PrivateRoute';
 export { default as Active } from './VolunteerInterface/Active';
-export { default as VoulenteerNavigation } from './VolunteerInterface/VoulenteerNavigation';
-export { default as Closed } from './VolunteerInterface/Closed';
-export { default as Available } from './VolunteerInterface/Available';
 export { default as ViewClosedOrder } from "./VolunteerInterface/ViewOrder/ViewClosedOrder";
 export { default as ViewFreeOrder } from "./VolunteerInterface/ViewOrder/ViewFreeOrder";
 export { default as ViewAcceptedOrder } from "./VolunteerInterface/ViewOrder/ViewAcceptedOrder";
@@ -13,6 +10,5 @@ export { default as ConfirmOrder } from "./ComanderInterface/Main/ConfirmOrder";
 export { default as ViewProfile } from "./ComanderInterface/Main/ViewProfile";
 export { default as CreateOrder } from "./ComanderInterface/Main/CreateOrder";
 export { default as ViewOrder } from "./ComanderInterface/Main/ViewOrder";
-export { default as PublicNavigation } from "./ComanderInterface/Main/PublicNavigation";
 export { default as Profile } from './ComanderInterface/Main/Profile'
 export { default as AuthContext } from "./context/AuthProvider";

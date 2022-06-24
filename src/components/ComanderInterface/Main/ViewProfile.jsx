@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Form, Row, Col } from 'react-bootstrap'
-import './style.css'
+import './styleCustomer.css'
 const ViewProfile = () => {
     return (
         <div className="color-overlay d-flex justify-content-center align-items-center">

@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, ButtonGroup, Col, Container, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import BootstrapDatePickerComponent from '../../Bootstrap/Bootstrap'
-import './style.css'
+import './styleCustomer.css'
 const CreateOrder = () => {
     const navigate = useNavigate()
     const goBack = () => navigate(-1)

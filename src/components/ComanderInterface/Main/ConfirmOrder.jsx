@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, ButtonGroup, Col, Container, Form, Row } from 'react-bootstrap'
-import CommanderNavbar from '../NavbarCommander/CommanderNavbar'
-import './style.css'
+import './styleCustomer.css'
 const ConfirmOrder = () => {
     return (
         <>
